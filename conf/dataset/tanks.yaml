@@ -1,0 +1,9 @@
+# @package _group_
+
+name: tanks
+collection: Truck
+data_subdir: tanks
+root_dir: "{config.experiment.data_dir}/{config.dataset.data_subdir}/{config.dataset.collection}/"
+img_wh: [480, 270]
+val_num: 8
+spherical_poses: True

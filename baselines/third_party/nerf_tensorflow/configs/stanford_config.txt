@@ -1,0 +1,23 @@
+# This replicates the paper result for "Fern"
+# when trained to 200k iters. Settings are the
+# same for all other LLFF-style real scenes.
+
+expname = nerf_gem
+basedir = ~/local/logs
+datadir = ~/local/data/stanford_eval/gem
+dataset_type = stanford
+factor = 2
+
+no_batching = False
+
+use_viewdirs = True
+lrate_decay = 250
+raw_noise_std = 1.0
+
+N_samples = 64
+N_importance = 128
+N_rand = 1024
+
+i_weights = 10000
+i_video = 100000
+i_testset = 100000

@@ -1,0 +1,83 @@
+# @package _group_
+
+type: subdivided_lightfield
+
+subdivision:
+  type: latent_voxel
+
+  min_point: [-1.5, -1.5, -1]
+  max_point: [1.5, 1.5, 1]
+  voxel_size: 0.0625
+
+  near: 0.0
+  far: 1.0
+  max_hits: 32
+
+  latent_dim: 0
+
+  update_every: inf
+  split_every: inf
+  max_update_iters: 1
+  threshold:
+    type: linear
+    start: 0.001
+    end: 0.005
+
+  forward_facing: True
+  use_bg: False
+
+
+render:
+  type: subdivided
+
+
+ray:
+  type: lightfield
+
+  use_latent_color: True
+
+  param:
+    n_dims: 6
+    fn: pluecker
+    voxel_size: 0.0625
+
+  latent_pe:
+    type: select
+    select_channels: 3
+    n_freqs: 8
+    wait_iters: 0
+    max_freq_iter: 0
+    exclude_identity: False
+
+  embedding_pe:
+    type: windowed
+    n_freqs: 0
+    wait_iters: 0
+    max_freq_iter: 50000
+    exclude_identity: False
+
+  embedding_net:
+    type: warp
+    depth: 6
+    hidden_channels: 256
+    skips: []
+    out_channels: 32
+    activation: l2_norm
+
+  color_pe:
+    type: windowed
+    n_freqs: 8
+    wait_iters: 0
+    max_freq_iter: 50000
+    exclude_identity: False
+
+  color_net:
+    type: base
+    depth: 8
+    hidden_channels: 256
+    skips: [4]
+    activation: sigmoid
+
+
+fuse:
+  type: default

@@ -1,0 +1,15 @@
+# @package _group_
+
+ckpt_dir: "~/local/checkpoints"
+log_dir: "~/local/logs"
+data_dir: "~/local/data"
+name: "{config.dataset.name}_{config.dataset.collection}"
+
+print_loss: False
+
+log_images: False
+log_videos: False
+
+save_results: True
+save_video_dir: "{config.experiment.name}/val_videos"
+save_image_dir: "{config.experiment.name}/val_images"

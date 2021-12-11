@@ -1,0 +1,30 @@
+# @package _group_
+
+r0:
+  type: focus_vis
+
+  s:
+  t:
+
+  ds: 200.0
+  dt: 200.0
+
+  st_scale:
+  uv_scale:
+
+  near: -1.0
+  far: 0.0
+  focal: 0.0
+
+
+r1:
+  type: epi_vis
+  t:
+  v:
+  H:
+
+  st_scale:
+  uv_scale:
+
+  near: -1.0
+  far: 0.0

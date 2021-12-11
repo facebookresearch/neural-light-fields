@@ -1,0 +1,4 @@
+- dataset=stanford_lightfield_treasure
+- model=stanford_lightfield_subdivided_local
+- training=stanford_lightfield_lf
+- experiment.name=treasure_act_leaky_relu_0

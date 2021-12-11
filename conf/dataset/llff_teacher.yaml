@@ -1,0 +1,17 @@
+# @package _group_
+
+name: dense_llff
+collection: fern_dense
+split: train
+root_dir: "{config.experiment.data_dir}/{config.dataset.data_subdir}/{config.dataset.collection}/"
+
+img_wh: [504, 378]
+#img_wh: [400, 300]
+spherical_poses: False
+use_ndc: True
+
+num_rows: 10
+num_cols: 10
+train_row_skip: 1
+train_col_skip: 1
+size: 1000

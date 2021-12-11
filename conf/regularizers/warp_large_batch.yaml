@@ -1,0 +1,32 @@
+# @package _group_
+
+count: 1
+
+r0:
+  type: warp
+  ray_chunk: 32768
+  batch_size: 32768
+  use_inp_freq: inf
+
+  weight:
+    type: exponential_decay
+    start: 0.1
+    decay: 0.5
+    num_epochs: 500
+
+  dataset:
+    name: random_lightfield
+    uv_plane: 0
+    st_plane: 0.5
+    num_views: all
+
+  loss:
+    type: mse
+
+  range:
+    pos: 1.0
+    dir: 1.0
+
+  jitter:
+    pos: 0.01
+    dir: 0.01

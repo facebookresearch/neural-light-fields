@@ -1,0 +1,52 @@
+# @package _group_
+
+type: multiple_lightfield
+
+render:
+  type: multiple
+
+param:
+  n_dims: 4
+  fn: two_plane
+
+num_slices: 8
+compressed: True
+
+embedding_pe:
+  type: windowed
+  n_freqs: 0
+  wait_iters: 0
+  max_freq_iter: 50000
+  exclude_identity: False
+
+embedding_net:
+  pe:
+    type: windowed
+    n_freqs: 2
+    wait_iters: 0
+    max_freq_iter: 0
+    exclude_identity: False
+
+  type: local_warp
+  depth: 8
+  hidden_channels: 256
+  skips: [4]
+  param_channels: 4
+  out_channels: 32
+  tform_activation: l2_norm
+  bias_activation: tanh
+  activation: identity
+
+color_pe:
+  type: windowed
+  n_freqs: 8
+  wait_iters: 0
+  max_freq_iter: 50000
+  exclude_identity: False
+
+color_net:
+  type: base
+  depth: 8
+  hidden_channels: 256
+  skips: [4]
+  activation: identity

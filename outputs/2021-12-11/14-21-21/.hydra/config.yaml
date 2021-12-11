@@ -1,0 +1,149 @@
+dataset:
+  name: stanford_lightfield
+  collection: treasure
+  data_subdir: stanford_half
+  root_dir: '{config.experiment.data_dir}/{config.dataset.data_subdir}/{config.dataset.collection}/'
+  img_wh:
+  - 768
+  - 640
+  spherical_poses: false
+  use_ndc: false
+  val_pairs: []
+  val_num: 8
+  val_skip: 1
+  render_params:
+    spiral: false
+    nearest: false
+    far: false
+    interpolate: false
+    supersample: 4
+    crop: 1.0
+    spiral_rad: 0.75
+    uv_downscale: 0.0
+  lightfield:
+    rows: 17
+    cols: 17
+    step: 4
+    supersample: 2
+    disp_row: 8
+    use_file_coords: true
+    st_scale: 0.25
+    vis_st_scale: null
+experiment:
+  ckpt_dir: ~/local/checkpoints
+  log_dir: ~/local/logs
+  data_dir: ~/local/data
+  name: treasure_act_leaky_relu_0
+  print_loss: false
+  log_images: false
+  log_videos: false
+  save_results: true
+  save_video_dir: '{config.experiment.name}/val_videos'
+  save_image_dir: '{config.experiment.name}/val_images'
+training:
+  batch_size: 8192
+  ray_chunk: 131072
+  net_chunk: 131072
+  log_every: 1
+  update_data_every: 1
+  val_every: 200
+  render_every: 200
+  ckpt_every: 50
+  test_every: 1000
+  flush_logs: 1000
+  num_epochs: 5000
+  reload_data_every: 100
+  num_workers: 16
+  num_gpus: 1
+  render_only: false
+  test_only: false
+  multiscale: false
+  scales:
+  - 2
+  - 1
+  scale_epochs:
+  - 0
+  - 50
+  scale_batch_sizes:
+  - 4096
+  - 32768
+  seed: 1
+  weight_init:
+    type: none
+  loss:
+    type: mse
+  color:
+    optimizer: adam
+    lr: 0.0005
+    clip: false
+    clip_amount: 1.0
+    alpha: 0.95
+    momentum: 0.0
+    weight_decay: 0
+    lr_scheduler: exp
+    warmup_multiplier: 1.0
+    warmup_epochs: 1
+    decay_step: 1000
+    decay_gamma: 0.25
+  embedding:
+    optimizer: adam
+    lr: 0.00025
+    clip: false
+    clip_amount: 1.0
+    alpha: 0.95
+    momentum: 0.0
+    weight_decay: 0
+    lr_scheduler: exp
+    warmup_multiplier: 1.0
+    warmup_epochs: 1
+    decay_step: 500
+    decay_gamma: 0.1
+model:
+  type: lightfield
+  render:
+    type: lightfield
+  param:
+    n_dims: 4
+    fn: two_plane
+  use_skip: false
+  embedding_pe:
+    type: windowed
+    n_freqs: 0
+    wait_iters: 0
+    max_freq_iter: 0
+    exclude_identity: false
+  embedding_net:
+    pe:
+      type: windowed
+      n_freqs: 0
+      wait_iters: 0
+      max_freq_iter: 80000
+      exclude_identity: false
+    type: local_warp
+    depth: 4
+    hidden_channels: 256
+    skips: []
+    param_channels: 4
+    out_channels: 16
+    tform_activation: l2_norm
+    bias_activation: tanh
+    activation: identity
+    layer_activation:
+      type: leaky_relu
+      sigma: 0.25
+  color_pe:
+    type: windowed
+    n_freqs: 10
+    wait_iters: 0
+    max_freq_iter: 10000
+    exclude_identity: false
+  color_net:
+    type: base
+    depth: 4
+    hidden_channels: 256
+    skips: []
+    layer_activation:
+      type: leaky_relu
+      sigma: 0.25
+regularizers:
+  count: 0

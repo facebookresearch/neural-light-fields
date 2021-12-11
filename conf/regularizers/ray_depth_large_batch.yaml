@@ -1,0 +1,104 @@
+# @package _group_
+
+count: 1
+
+r0:
+  type: ray_depth
+  ray_chunk: 32768
+  net_chunk: 32768
+  batch_size: 32768
+
+  wait_iters: 1000
+  warmup_iters: 0
+  use_inp_freq: 2
+
+  dataset:
+    name: random_view
+    num_views: all
+
+  weight:
+    type: exponential_decay
+    start: 0.1
+    decay: 0.5
+    num_epochs: 500
+
+  use_disparity: False
+  num_features: 128
+  num_samples: 8
+
+  range:
+    pos: 1.0
+    dir: 1.0
+
+  jitter:
+    pos: 0.25
+    dir: 0.25
+
+  lookup_weight_map:
+    angle_std: 10.0
+    dist_std: 0.25
+
+  weight_map:
+    angle_std: 5.0
+    dist_std: 0.1
+
+  color_lookup_loss:
+    type: mae
+    weight: 0.0
+    wait_iters: 0
+
+  embedding_lookup_loss:
+    type: mae
+    weight: 0.0
+    wait_iters: 0
+
+  color_loss:
+    type: mae
+    weight: 0.5
+    wait_iters: 0
+
+  depth_loss:
+    type: mae
+    weight: 0.5
+    wait_iters: 0
+
+  embedding_loss:
+    type: mse
+    weight: 0.0
+    wait_iters: 0
+
+  occ_loss:
+    type: mae
+    weight: 0.01
+    wait_iters: 0
+
+  param:
+    n_dims: 6
+    fn: pluecker
+
+  pe:
+    n_freqs: 0
+    wait_iters: 0
+    max_freq_iter: 0
+    exclude_identity: False
+
+  net:
+    depth: 8
+    hidden_channels: 384
+    skips: [4]
+    activation: identity
+
+  optimizer:
+    optimizer: adam
+    lr: 0.001
+    clip: False
+    clip_amount: 1.0
+    momentum: 0.9
+    weight_decay: 0
+
+    lr_scheduler: exp
+    warmup_multiplier: 1.0
+    warmup_epochs: 1
+
+    decay_step: 500
+    decay_gamma: 0.1

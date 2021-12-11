@@ -1,0 +1,19 @@
+# @package _group_
+
+name: shiny
+collection: fern_undistort
+data_subdir: shiny
+root_dir: "{config.experiment.data_dir}/{config.dataset.data_subdir}/{config.dataset.collection}/"
+
+img_wh: [504, 378]
+#img_wh: [498, 374]
+spherical_poses: False
+use_ndc: True
+
+val_num: 1000
+val_skip: 8
+
+render_params:
+  interpolate: False
+  supersample: 4
+  crop: 1.0

@@ -1,0 +1,13 @@
+# @package _group_
+
+r0:
+  type: epi_vis
+  t:
+  v:
+  H:
+
+  st_scale:
+  uv_scale:
+
+  near: -1.0
+  far: 0.0

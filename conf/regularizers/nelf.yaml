@@ -1,0 +1,73 @@
+# @package _group_
+
+r0:
+  type: ray_bundle
+  ray_chunk: 131072
+  net_chunk: 131072
+  batch_size: 32768
+  use_inp_freq: inf
+  wait_iters: 0
+
+  weight:
+    type: exponential_decay
+    start: 0.074
+    decay: 1.0
+    num_epochs: 500
+
+  dataset:
+    name: random_lightfield
+    st_plane: -1.0
+    uv_plane: 0.0
+    num_views: all
+
+  color_weight_map:
+    angle_std: 1.5
+    dist_std: 0.1
+
+  color_loss:
+    type: mse
+    weight: 1.0
+    wait_iters: 0
+
+  range:
+    pos: 1.0
+    dir: 1.0
+
+  jitter:
+    dir: 0.1
+    bundle_size: 8
+
+r1:
+  type: fourier
+  ray_chunk: 131072
+  net_chunk: 131072
+  batch_size: 1
+  use_inp_freq: inf
+  wait_iters: 0
+
+  weight:
+    type: exponential_decay
+    start: 1.92
+    decay: 1.0
+    num_epochs: 500
+
+  dataset:
+    name: fourier_lightfield
+    num_views: all
+
+  fourier_loss:
+    type: mse
+    weight: 1.0
+    wait_iters: 0
+
+  range:
+    pos: 1.0
+    dir: 1.0
+
+r2:
+  type: epi_vis
+  t:
+  v:
+  H:
+  near: -1.0
+  far: 0.0

@@ -1,0 +1,8 @@
+# @package _group_
+
+defaults:
+  - dataset: llff
+  - experiment: local
+  - training: default
+  - model: nd
+  - regularizers: default

@@ -1,0 +1,33 @@
+# @package _group_
+
+r0:
+  type: teacher
+  batch_size: 2048
+
+  dataset:
+    name: "dense_{config.dataset.name}"
+    collection: "{config.dataset.collection}_dense"
+    split: train
+    root_dir: "{config.experiment.data_dir}/{config.dataset.data_subdir}/{config.dataset.collection}_dense/"
+
+    num_rows: 10
+    num_cols: 10
+    train_row_skip: 1
+    train_col_skip: 1
+    size: 1000
+
+  weight:
+    type: exponential_decay
+    start: 1.0
+    decay: 0.1
+    stop_weight: 0.025
+    num_epochs: 500
+
+  loss:
+    type: mse
+
+r1:
+  type: epi_vis
+  t:
+  v:
+  H:

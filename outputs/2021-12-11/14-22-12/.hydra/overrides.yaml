@@ -1,0 +1,6 @@
+- dataset=stanford_lightfield_treasure
+- model=stanford_lightfield_act
+- training=stanford_lightfield_lf
+- experiment.name=treasure_act_leaky_relu_0
+- model.embedding_net.out_channels=16
+- model.color_pe.max_freq_iter=10000

@@ -1,0 +1,30 @@
+# @package _group_
+
+name: stanford_lightfield
+collection: island
+data_subdir: stanford
+root_dir: "{config.experiment.data_dir}/{config.dataset.data_subdir}/{config.dataset.collection}/"
+
+img_wh: [862, 862]
+spherical_poses: False
+use_ndc: False
+
+val_pairs: [2,2]
+val_num: 8
+val_skip: 1
+
+render_params:
+  interpolate: False
+  supersample: 4
+  crop: 1.0
+
+lightfield:
+  rows: 5
+  cols: 5
+  step: 1
+  supersample: 4
+  disp_row: 2
+
+  use_file_coords: False
+  st_scale: 0.5
+  vis_st_scale:

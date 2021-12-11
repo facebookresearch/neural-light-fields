@@ -1,0 +1,69 @@
+# @package _group_
+
+count: 1
+
+r0:
+  type: ray_interpolation
+  ray_chunk: 32768
+  net_chunk: 32768
+  batch_size: 32768
+
+  use_depth_embedding: False
+  use_color_embedding: False
+  use_disparity: False
+
+  weight:
+    type: exponential_decay
+    start: 1.0
+    decay: 1.0
+    num_epochs: 500
+
+  points_per_view: 8
+  embedding_channels: 128
+
+  dataset:
+    name: random_view
+    num_views: 8
+
+  use_inp_freq: 0
+
+  color_loss:
+    type: mse
+    weight: 1.0
+
+    angle_std: 5.0
+    dist_std: 0.05
+
+  range:
+    pos: 1.0
+    dir: 1.0
+
+  lookup:
+    angle_std: 5.0
+    dist_std: 0.05
+
+  param:
+    n_dims: 6
+    fn: pluecker
+
+  blending_net:
+    type: base
+    depth: 8
+    hidden_channels: 384
+    skips: [4]
+    activation: sigmoid
+
+  optimizer:
+    optimizer: adam
+    lr: 0.001
+    clip: False
+    clip_amount: 1.0
+    momentum: 0.9
+    weight_decay: 0
+
+    lr_scheduler: exp
+    warmup_multipler: 1.0
+    warmup_epochs: 0
+
+    decay_step: 500
+    decay_gamma: 0.5

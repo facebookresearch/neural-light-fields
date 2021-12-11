@@ -1,0 +1,25 @@
+name: neural-light-fields
+channels:
+  - pyg
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - cudatoolkit=11.3.1
+  - cudatoolkit-dev=11.3.1
+  - kornia=0.6.1
+  - pillow=8.4.0
+  - python=3.8
+  - pip
+  - pytorch=1.10.0
+  - pytorch-lightning=1.5.5
+  - pytorch-scatter=2.0.9
+  - scikit-image=0.18.3
+  - scipy=1.7.1
+  - torchvision=0.11.1
+  - pip:
+    - hydra-core==1.1.1
+    - imageio==2.13.3
+    - iopath==0.1.9
+    - omegaconf==2.1.1
+    - opencv-python
