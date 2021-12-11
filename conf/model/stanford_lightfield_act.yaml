@@ -50,7 +50,7 @@ color_pe:
 
 color_net:
   type: base
-  depth: 4
+  depth: 6
   hidden_channels: 256
   skips: []
 
