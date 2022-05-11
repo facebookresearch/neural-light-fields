@@ -1,0 +1,12 @@
+# @package _group_
+
+defaults:
+  - params: local
+  - dataset: blender
+  - model: blender_subdivided
+  - training: blender_subdivided
+  - regularizers: all
+  - visualizers: all
+
+
+

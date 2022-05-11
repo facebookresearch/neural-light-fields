@@ -1,0 +1,48 @@
+# @package _group_
+
+type: lightfield
+
+render:
+  type: lightfield
+
+param:
+  n_dims: 4
+  fn: two_plane
+
+embedding_pe:
+  type: windowed
+  n_freqs: 0
+  wait_iters: 0
+  max_freq_iter: 0
+  exclude_identity: False
+
+embedding_net:
+  pe:
+    type: windowed
+    n_freqs: 0
+    wait_iters: 0
+    max_freq_iter: 80000
+    exclude_identity: False
+
+  type: local_affine
+  depth: 8
+  hidden_channels: 256
+  skips: [4]
+  param_channels: 4
+  tform_out_channels: 32
+  tform_activation: row_l2_norm
+  bias_activation: tanh
+  activation: identity
+
+color_pe:
+  type: windowed
+  n_freqs: 10
+  wait_iters: 0
+  max_freq_iter: 80000
+  exclude_identity: False
+
+color_net:
+  type: base
+  depth: 8
+  hidden_channels: 256
+  skips: [4]

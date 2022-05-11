@@ -1,0 +1,18 @@
+Project: X-Fields: Implicit Neural View-, Light- and Time-Image Interpolation
+Version: 1.0
+Release date: 10-18-2020
+Website: https://github.com/m-bemana/xfields
+License: MIT
+Description: Official implementation of
+
+@article{Bemana2020xfields,
+    author	= {Mojtaba Bemana, Karol Myszkowski, Hans-Peter Seidel, Tobias Ritschel},
+    title	= {X-Fields: Implicit Neural View-, Light- and Time-Image Interpolation},
+    journal	= {ACM Transactions on Graphics (Proc. SIGGRAPH Asia 2020)},
+    year	= {2020},
+    volume = {39},
+    number = {6},
+    doi = {10.1145/3414685.3417827}
+    }
+
+Changes: Modifications to allow for spiral rendering, stanford light field evaluation

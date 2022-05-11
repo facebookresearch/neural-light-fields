@@ -1,0 +1,16 @@
+# To run: conda env create -f environment.yml
+name: xfields
+channels:
+    - conda-forge
+    - pytorch
+dependencies:
+    - python==3.7
+    - pip
+    - cudatoolkit=10.0
+    - imagemagick
+    - pip:
+        - tensorflow-gpu==1.14
+        - tensorlayer
+        - numpy
+        - opencv-python
+        - imageio

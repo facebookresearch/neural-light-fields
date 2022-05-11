@@ -1,0 +1,100 @@
+# @package _group_
+
+type: subdivided_lightfield
+
+subdivision:
+  type: latent_voxel
+
+  min_point: [-1.5, -1.5, -1]
+  max_point: [1.5, 1.5, 1]
+  voxel_size:
+  max_hits: 4
+
+  latent_dim: 0
+
+  update_every: inf
+  split_every: inf
+  max_update_iters: 10
+  threshold:
+    type: linear
+    start: 0.001
+    end: 0.01
+
+  forward_facing: True
+  no_voxel: False
+  use_bg: False
+
+
+render:
+  type: subdivided
+
+
+ray:
+  type: lightfield
+
+  use_latent_color: True
+
+  param:
+    n_dims: 4
+    fn: two_plane
+    voxel_size:
+
+  latent_pe:
+    type: select
+    select_channels: 3
+    freq_multiplier: 8.0
+    n_freqs: 4
+    wait_iters: 0
+    max_freq_iter: 0
+    exclude_identity: False
+
+  embedding_pe:
+    type: windowed
+    n_freqs: 0
+    wait_iters: 0
+    max_freq_iter: 0
+    exclude_identity: False
+
+  embedding_net:
+    pe:
+      type: windowed
+      n_freqs: 0
+      wait_iters: 0
+      max_freq_iter: 0
+      exclude_identity: False
+
+    type: local_affine
+    depth: 6
+    hidden_channels: 256
+    skips: [3]
+    param_channels: 4
+    tform_out_channels: 32
+
+    tform_activation: row_l2_norm
+    bias_activation: tanh
+    activation: identity
+
+    layer_activation:
+      type: leaky_relu
+      sigma: 0.25
+
+  color_pe:
+    type: windowed
+    freq_multiplier: 4.0
+    n_freqs: 5
+    wait_iters: 0
+    max_freq_iter: 40000
+    exclude_identity: False
+
+  color_net:
+    type: base
+    depth: 6
+    hidden_channels: 256
+    skips: [3]
+
+    layer_activation:
+      type: leaky_relu
+      sigma: 0.25
+
+fuse:
+  type: default

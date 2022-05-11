@@ -1,0 +1,9 @@
+# @package _group_
+
+defaults:
+  - params: local
+  - dataset: stanford
+  - model: stanford_half
+  - training: stanford_lf_half
+  - regularizers: all
+  - visualizers: all

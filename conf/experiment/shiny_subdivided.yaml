@@ -1,0 +1,11 @@
+# @package _group_
+
+defaults:
+  - params: local
+  - dataset: shiny
+  - model: shiny_subdivided_affine
+  - training: shiny_subdivided
+  - regularizers: all
+  - visualizers: all
+
+

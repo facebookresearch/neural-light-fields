@@ -1,0 +1,9 @@
+# @package _group_
+
+defaults:
+  - params: local
+  - dataset: stanford_gem
+  - model: stanford_affine
+  - training: stanford_lf
+  - regularizers: all
+  - visualizers: all

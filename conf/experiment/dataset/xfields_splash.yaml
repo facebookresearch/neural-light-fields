@@ -1,0 +1,30 @@
+# @package _group_
+
+name: stanford
+collection: splash
+data_subdir: stanford
+root_dir: "${experiment.params.data_dir}/${experiment.dataset.data_subdir}/${experiment.dataset.collection}/"
+
+img_wh: [512, 512]
+spherical_poses: False
+use_ndc: False
+
+val_pairs: [2,2]
+val_num: 8
+val_skip: 1
+
+render_params:
+  interpolate: False
+  supersample: 4
+  crop: 1.0
+
+lightfield:
+  rows: 5
+  cols: 5
+  step: 1
+  supersample: 4
+  disp_row: 2
+
+  use_file_coords: False
+  st_scale: 0.5
+  vis_st_scale:

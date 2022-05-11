@@ -1,0 +1,14 @@
+Project: NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis
+Version: https://github.com/bmild/nerf/tree/20a91e764a28816ee2234fcadb73bd59a613a44c
+Website: https://github.com/bmild/nerf
+License: MIT License
+Description: Official implementation of this paper:
+
+@inproceedings{mildenhall2020nerf,
+  title={NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis},
+  author={Ben Mildenhall and Pratul P. Srinivasan and Matthew Tancik and Jonathan T. Barron and Ravi Ramamoorthi and Ren Ng},
+  year={2020},
+  booktitle={ECCV},
+}
+
+Changes: Stanford Light Field Dataset loading

@@ -1,0 +1,51 @@
+# @package _group_
+
+type: lightfield
+
+render:
+  type: lightfield
+
+param:
+  n_dims: 6
+  fn: pluecker
+
+embedding_pe:
+  type: windowed
+  n_freqs: 0
+  wait_iters: 0
+  max_freq_iter: 0
+  exclude_identity: False
+
+embedding_net:
+  pe:
+    type: windowed
+    n_freqs: 0
+    wait_iters: 0
+    max_freq_iter: 0
+    exclude_identity: False
+
+  type: local_affine
+  depth: 8
+  hidden_channels: 256
+  skips: [4]
+  param_channels: 6
+  tform_out_channels: 32
+  tform_activation:
+    type: row_l2_norm
+    param_channels: 6
+  bias_activation: tanh
+  activation: identity
+
+color_pe:
+  type: windowed
+  n_freqs: 8
+  wait_iters: 0
+  max_freq_iter: 6000
+  exclude_identity: False
+
+color_net:
+  type: base
+  depth: 8
+  hidden_channels: 256
+  skips: [4]
+

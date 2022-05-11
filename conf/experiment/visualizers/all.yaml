@@ -1,0 +1,5 @@
+# @package _group_
+
+defaults:
+  - epipolar: default
+  - closest_view: default

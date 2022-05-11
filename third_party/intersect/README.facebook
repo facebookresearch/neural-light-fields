@@ -1,0 +1,7 @@
+Project: Neural Sparse Voxel Fields (NSVF)
+Version: 1.0
+Release date: 01-01-2021
+Website: https://lingjie0206.github.io/papers/NSVF/
+License: MIT
+Description: High performance GPU voxel octree intersection code from the Neural Sparse Voxel Fields project (developed, in part by FAIR).
+Changes: Modifications to allow for intersections of front / back-faces of voxels only

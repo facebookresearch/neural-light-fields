@@ -1,0 +1,9 @@
+# @package _group_
+
+defaults:
+  - params: local
+  - dataset: llff
+  - model: llff_subdivided_half
+  - training: llff_subdivided_half
+  - regularizers: all
+  - visualizers: all

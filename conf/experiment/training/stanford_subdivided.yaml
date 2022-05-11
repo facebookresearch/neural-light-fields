@@ -1,0 +1,63 @@
+# @package _group_
+
+batch_size: 4096
+ray_chunk: 131072
+net_chunk: 131072
+
+update_data_every: 1
+reload_data_every: 100
+
+log_every: 1
+val_every: 200
+render_every: 200
+ckpt_every: 50
+test_every: 1000
+flush_logs: 1000
+num_epochs: 5000
+
+num_workers: 8
+num_gpus: 1
+
+render_only: False
+test_only: False
+
+multiscale: False
+scales: [2, 1]
+scale_epochs: [0, 50]
+scale_batch_sizes: [4096, 32768]
+
+weight_init:
+  type: none
+
+loss:
+  type: mse
+
+color:
+  optimizer: adam
+  lr: 0.0005
+  clip: False
+  clip_amount: 1.0
+  momentum: 0.9
+  weight_decay: 0
+
+  lr_scheduler: exp
+  warmup_multiplier: 1.0
+  warmup_epochs: 1
+
+  decay_step: 1000
+  decay_gamma: 0.25
+
+embedding:
+  optimizer: adam
+  lr: 0.00025
+  clip: False
+  clip_amount: 1.0
+  momentum: 0.9
+  weight_decay: 0
+
+  lr_scheduler: exp
+  warmup_multiplier: 1.0
+  warmup_epochs: 1
+
+  decay_step: 1000
+  decay_gamma: 0.1

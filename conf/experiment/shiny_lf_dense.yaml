@@ -1,0 +1,10 @@
+# @package _group_
+
+defaults:
+  - params: local
+  - dataset: shiny_dense
+  - model: shiny_affine
+  - training: shiny_lf
+  - regularizers: all
+  - visualizers: all
+

@@ -1,0 +1,16 @@
+# @package _group_
+
+name: blender
+collection: lego
+data_subdir: nerf_synthetic
+root_dir: "${experiment.params.data_dir}/${experiment.dataset.data_subdir}/${experiment.dataset.collection}/"
+
+img_wh: [400, 400]
+spherical_poses: True
+use_ndc: False
+
+precrop_frac: 0.5
+precrop_iters: 0
+
+val_num: 8
+val_skip: 1
