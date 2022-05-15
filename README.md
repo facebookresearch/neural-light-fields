@@ -77,6 +77,12 @@ To train a *subdivided* neural light field on the Shiny dataset, run
 python main.py experiment=shiny_subdivided experiment.dataset.collection=<scene> experiment.model.subdivision.max_hits=<num_subdivisions>
 ```
 
+We use a slightly different configuration for the denser *CD* and *Lab* sequences from the Shiny dataset (larger batch size). For these sequences, run
+
+```bash
+python main.py experiment=shiny_subdivided_dense experiment.dataset.collection=<scene> experiment.model.subdivision.max_hits=<num_subdivisions>
+```
+
 # Testing
 Testing is performed automatically during training with frequency dictated by `experiment.training.test_every`. Results are written by default to `logs/<experiment_name>/val_images/<epoch>`. You can also manually trigger testing by running
 
